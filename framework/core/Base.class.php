@@ -1,6 +1,6 @@
 <?php
 
-abstract class Base
+class Base
 {
 	
 }
