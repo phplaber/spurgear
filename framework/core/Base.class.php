@@ -2,7 +2,8 @@
 
 class Base
 {
-	private $data = array();	// 重载数据容器
+    // 重载数据容器
+	private $data = array();
 
 	// 动态设置变量
 	public function __set($name, $value)
@@ -31,8 +32,23 @@ class Base
 	}
 
 	// 自动加载类
-	public function autoload($classname)
+	public static function autoload($classname)
 	{
-	
+	    // 自动加载工具类文件列表中文件
+	    $utils_file = SPURGEAR_PATH . DS . 'utils' .DS . $classname . '.php';
+	    if (is_file($utils_file)) {
+	        require $utils_file;
+	        return ;
+	    }
+	    
+	    // 自动加载项目的Action类和Model类
+	    if ('Action' === substr($classname, -6)) {
+	        require APP_PATH . DS . 'action'. DS . $classname . '.class.php';
+	    } elseif ('Model' === substr($classname, -5)){
+	        require APP_PATH . DS . 'model'. DS . $classname . '.class.php';
+	    } else {
+	        // TODO
+	    }
+	    return ;
 	}
 }

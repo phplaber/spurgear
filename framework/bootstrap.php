@@ -14,3 +14,4 @@ if (is_array($config['core']) && !empty($config['core'])) {
 }
 
 App::init();
+App::run();
