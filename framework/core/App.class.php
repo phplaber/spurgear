@@ -21,7 +21,12 @@ class App
      */
     public static function run()
     {
-        echo 'hello, spurgear!';
+        // 创建当前控制器示例
+        $module_class = MODULE_NAME . 'Action';
+        $module = new $module_class;
+        $action = ACTION_NAME;
+        call_user_func(array(&$module, $action));
+        return ;
     }
     
     /**

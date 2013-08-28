@@ -43,9 +43,21 @@ class Base
 	    
 	    // 自动加载项目的Action类和Model类
 	    if ('Action' === substr($classname, -6)) {
-	        require APP_PATH . DS . 'action'. DS . $classname . '.class.php';
+	        $file_path = ACTION_PATH . DS . $classname . '.class.php';
+	        if (is_file($file_path)) {
+	            require $file_path;
+	        } else {
+	            echo 'Not exists module --> ' . substr($classname, 0, -6);
+	            exit;
+	        }
 	    } elseif ('Model' === substr($classname, -5)){
-	        require APP_PATH . DS . 'model'. DS . $classname . '.class.php';
+	        $file_path = MODEL_PATH . DS . $classname . '.class.php';
+	        if (is_file($file_path)) {
+	            require $file_path;
+	        } else {
+	            echo 'Not exists model --> ' . substr($classname, 0, -5);
+	            exit;
+	        }
 	    } else {
 	        // TODO
 	    }

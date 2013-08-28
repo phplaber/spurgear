@@ -9,6 +9,11 @@ class IndexAction extends Action
     // for test
     public function index()
     {
-        echo 'hello, spurgear!';
+        echo 'welcome';
+    }
+    
+    public function sayHello()
+    {
+        echo 'hello, world';
     }
 }
