@@ -61,8 +61,8 @@ class App
     /**
      * 异常处理
      */
-    public static function exceptionHandler()
+    public static function exceptionHandler($e)
     {
-        
+        exit('Caught exception:' . $e->__toString());
     }
 }
