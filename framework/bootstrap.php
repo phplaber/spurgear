@@ -8,6 +8,8 @@ if (is_array($config['core']) && !empty($config['core'])) {
     foreach ($config['core'] as $filename) {
         $file = CORE_PATH . DS . $filename . '.class.php';
         if (is_file($file)) {
+            // 每次创建应用都会去包含文件，性能会受影响。
+            // 可以优化为autoload方式加载文件。
             require $file;
         }
     }
